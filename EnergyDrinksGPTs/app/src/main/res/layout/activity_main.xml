@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:scaleX="1.2"
+    android:scaleY="1">
+
+    <ImageView
+        android:id="@+id/classicRedBull"
+        android:layout_width="395dp"
+        android:layout_height="408dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="130dp"
+        android:adjustViewBounds="true"
+        android:baselineAlignBottom="false"
+        android:contentDescription="Classic Red Bull"
+        android:foreground="@drawable/classic_red_bull"
+        android:scaleX="1"
+        android:src="@drawable/classic_red_bull"
+        android:visibility="visible"
+    />
+
+</RelativeLayout>
