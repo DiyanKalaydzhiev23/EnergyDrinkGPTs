@@ -3,14 +3,14 @@
     <rotate
         android:duration="100"
         android:fromDegrees="0"
-        android:pivotX="50%"
-        android:pivotY="50%"
+        android:pivotX="70%"
+        android:pivotY="90%"
         android:toDegrees="5" />
     <rotate
         android:duration="100"
         android:startOffset="100"
         android:fromDegrees="5"
-        android:pivotX="50%"
-        android:pivotY="50%"
+        android:pivotX="70%"
+        android:pivotY="90%"
         android:toDegrees="0" />
 </set>
