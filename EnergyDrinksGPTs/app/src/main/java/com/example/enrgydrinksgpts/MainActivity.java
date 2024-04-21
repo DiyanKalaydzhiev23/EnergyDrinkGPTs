@@ -2,6 +2,7 @@ package com.example.enrgydrinksgpts;
 
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -10,7 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity implements ShakeDetector.OnShakeListener {
     private ShakeDetector shakeDetector;
     private MediaPlayerHandler mediaPlayerHandler;
-    private ImageView imageView;
+    private ImageView sodaCanImageView;
+    private ImageView sodaFoamImage;
     private boolean isTiltedRight = true;
 
     @Override
@@ -18,10 +20,36 @@ public class MainActivity extends AppCompatActivity implements ShakeDetector.OnS
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        imageView = findViewById(R.id.classicRedBull);
         mediaPlayerHandler = new MediaPlayerHandler(this, R.raw.shake_sound);
+
+        sodaCanImageView = findViewById(R.id.classicRedBull);
+        sodaFoamImage = findViewById(R.id.sodaFoam);
+
         shakeDetector = new ShakeDetector(this);
         shakeDetector.register((SensorManager) getSystemService(SENSOR_SERVICE));
+    }
+
+    private void setupSodaFoamImageView() {
+        Animation scaleAnimation = AnimationUtils.loadAnimation(this, R.anim.scale_animation);
+
+        scaleAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                sodaFoamImage.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                // Optionally do something after animation ends
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+                // Not needed, but must be overridden
+            }
+        });
+
+        sodaFoamImage.startAnimation(scaleAnimation);
     }
 
     @Override
@@ -40,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements ShakeDetector.OnS
         this.mediaPlayerHandler.stop();
         this.mediaPlayerHandler = new MediaPlayerHandler(this, R.raw.can_open_sound);
         this.mediaPlayerHandler.play();
+        this.setupSodaFoamImageView();
         this.shakeDetector.unregister((SensorManager) getSystemService(SENSOR_SERVICE));
     }
 
@@ -55,12 +84,12 @@ public class MainActivity extends AppCompatActivity implements ShakeDetector.OnS
 
     private void animateTiltLeft() {
         Animation tiltLeftAnim = AnimationUtils.loadAnimation(this, R.anim.tilt_left);
-        imageView.startAnimation(tiltLeftAnim);
+        sodaCanImageView.startAnimation(tiltLeftAnim);
     }
 
     private void animateTiltRight() {
         Animation tiltRightAnim = AnimationUtils.loadAnimation(this, R.anim.tilt_right);
-        imageView.startAnimation(tiltRightAnim);
+        sodaCanImageView.startAnimation(tiltRightAnim);
     }
 
     @Override
