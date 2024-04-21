@@ -35,6 +35,14 @@ public class MainActivity extends AppCompatActivity implements ShakeDetector.OnS
         mediaPlayerHandler.stop();
     }
 
+    @Override
+    public void onCanOpen() {
+        this.mediaPlayerHandler.stop();
+        this.mediaPlayerHandler = new MediaPlayerHandler(this, R.raw.can_open_sound);
+        this.mediaPlayerHandler.play();
+        this.shakeDetector.unregister((SensorManager) getSystemService(SENSOR_SERVICE));
+    }
+
     private void tiltImage() {
         if (isTiltedRight) {
             animateTiltLeft();

@@ -1,25 +1,29 @@
 package com.example.enrgydrinksgpts;
 
+import android.hardware.SensorManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 
 public class ShakeDetector implements SensorEventListener {
 
     private static final int SHAKE_THRESHOLD = 200;
     private static final int SHAKE_STOP_THRESHOLD = 50;
+    private static final int CAN_OPEN_THRESHOLD = 3000;
     private long lastUpdate = 0;
+    private long timeStartedPlaying;
     private float last_x, last_y, last_z;
-    private OnShakeListener listener;
+    private final OnShakeListener listener;
 
     public interface OnShakeListener {
         void onShake();
         void onStopShake();
+        void onCanOpen();
     }
 
     public ShakeDetector(OnShakeListener listener) {
         this.listener = listener;
+        this.timeStartedPlaying = 0;
     }
 
     public void register(SensorManager sensorManager) {
@@ -46,11 +50,22 @@ public class ShakeDetector implements SensorEventListener {
                 long diffTime = (curTime - lastUpdate);
                 lastUpdate = curTime;
 
+                long diffTimeFromShakingStart = curTime -  this.timeStartedPlaying;
+
+                if (diffTimeFromShakingStart >= CAN_OPEN_THRESHOLD && this.timeStartedPlaying != 0) {
+                    listener.onCanOpen();
+                }
+
                 float speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
 
                 if (speed > SHAKE_THRESHOLD) {
+                    if (this.timeStartedPlaying == 0) {
+                        this.timeStartedPlaying = curTime;
+                    }
+
                     listener.onShake();
                 } else if (speed < SHAKE_STOP_THRESHOLD) {
+                    this.timeStartedPlaying = 0;
                     listener.onStopShake();
                 }
 
