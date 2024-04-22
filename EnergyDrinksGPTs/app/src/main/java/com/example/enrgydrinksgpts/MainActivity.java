@@ -1,12 +1,16 @@
 package com.example.enrgydrinksgpts;
 
+import android.content.Intent;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.enrgydrinksgpts.chats.ChatViewActivity;
 
 public class MainActivity extends AppCompatActivity implements ShakeDetector.OnShakeListener {
     private ShakeDetector shakeDetector;
@@ -40,7 +44,8 @@ public class MainActivity extends AppCompatActivity implements ShakeDetector.OnS
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                // Optionally do something after animation ends
+                Intent intent = new Intent(MainActivity.this, ChatViewActivity.class);
+                startActivity(intent);
             }
 
             @Override
@@ -65,11 +70,13 @@ public class MainActivity extends AppCompatActivity implements ShakeDetector.OnS
 
     @Override
     public void onCanOpen() {
-        this.mediaPlayerHandler.stop();
-        this.mediaPlayerHandler = new MediaPlayerHandler(this, R.raw.can_open_sound);
-        this.mediaPlayerHandler.play();
-        this.setupSodaFoamImageView();
-        this.shakeDetector.unregister((SensorManager) getSystemService(SENSOR_SERVICE));
+        mediaPlayerHandler.stop(); // Stop any ongoing sound
+        mediaPlayerHandler = new MediaPlayerHandler(this, R.raw.can_open_sound);
+        mediaPlayerHandler.play(); // Play the can opening sound
+
+        setupSodaFoamImageView(); // Start the foam animation
+
+        shakeDetector.unregister((SensorManager) getSystemService(SENSOR_SERVICE));
     }
 
     private void tiltImage() {
