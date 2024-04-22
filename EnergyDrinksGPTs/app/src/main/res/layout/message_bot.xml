@@ -9,8 +9,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/message_left_solid"
-        android:textColor="#9d9da5"
+        android:textColor="#3A3A3E"
         android:padding="10dp"
         android:layout_marginEnd="30dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+    />
 </FrameLayout>

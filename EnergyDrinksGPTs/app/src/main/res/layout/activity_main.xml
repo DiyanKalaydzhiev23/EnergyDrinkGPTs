@@ -4,8 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:background="#EAD3D5"
     android:scaleX="1.2"
-    android:scaleY="1">
+    android:scaleY="1"
+    >
 
     <ImageView
         android:id="@+id/classicRedBull"
