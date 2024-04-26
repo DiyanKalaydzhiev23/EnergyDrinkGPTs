@@ -11,9 +11,13 @@
         android:id="@+id/chatRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/sendMessageLayout"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:paddingTop="45dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="8dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 
     <LinearLayout
         android:id="@+id/sendMessageLayout"
@@ -28,18 +32,16 @@
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_weight="1"
+            android:background="@drawable/message_left_solid"
             android:hint="Message..."
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:background="@drawable/message_left_solid"
-            android:textColor="#3A3A3E"
-        />
+            android:textColor="#3A3A3E" />
 
         <Button
             android:id="@+id/sendButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Send"
-        />
+            android:text="Send" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

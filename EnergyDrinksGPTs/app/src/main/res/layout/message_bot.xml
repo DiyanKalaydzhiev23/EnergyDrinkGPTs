@@ -11,6 +11,7 @@
         android:background="@drawable/message_left_solid"
         android:textColor="#3A3A3E"
         android:padding="10dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginEnd="30dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
     />
