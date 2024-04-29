@@ -126,6 +126,7 @@ public class ChatViewActivity extends AppCompatActivity {
                         public void run() {
                             chatMessages.add(new ChatMessage(assistantMessage, ChatMessage.SENDER_OTHER));
                             ChatMessageAdapter.notifyItemInserted(chatMessages.size() - 1);
+                            chatRecyclerView.scrollToPosition(chatMessages.size() - 1);
                         }
                     });
                 } catch (Exception e) {

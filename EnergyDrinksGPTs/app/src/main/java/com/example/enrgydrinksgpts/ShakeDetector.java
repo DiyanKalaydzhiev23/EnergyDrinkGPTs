@@ -9,7 +9,7 @@ public class ShakeDetector implements SensorEventListener {
 
     private static final int SHAKE_THRESHOLD = 200;
     private static final int SHAKE_STOP_THRESHOLD = 50;
-    private static final int CAN_OPEN_THRESHOLD = 3000;
+    private static final int CAN_OPEN_THRESHOLD = 2000;
     private long lastUpdate = 0;
     private long timeStartedPlaying;
     private float last_x, last_y, last_z;
