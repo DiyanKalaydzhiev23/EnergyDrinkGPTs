@@ -12,9 +12,9 @@ import com.example.enrgydrinksgpts.R;
 import java.util.List;
 
 public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.ChatMessageViewHolder> {
-    private List<ChatMessage> chatMessages;
-    private static final int VIEW_TYPE_USER = 1;
-    private static final int VIEW_TYPE_BOT = 2;
+    private final List<ChatMessage> chatMessages;
+    public static final int VIEW_TYPE_USER = 1;
+    public static final int VIEW_TYPE_BOT = 2;
 
     public ChatMessageAdapter(List<ChatMessage> chatMessages) {
         this.chatMessages = chatMessages;

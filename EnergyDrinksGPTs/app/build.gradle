@@ -76,4 +76,11 @@ dependencies {
     androidTestImplementation libs.androidx.ui.test.junit4
     debugImplementation libs.androidx.ui.tooling
     debugImplementation libs.androidx.ui.test.manifest
+    testImplementation libs.mockito.core
+    androidTestImplementation libs.androidx.core
+    androidTestImplementation libs.androidx.junit.v113
+    androidTestImplementation libs.androidx.core.v140
+    androidTestImplementation libs.androidx.runner
+    androidTestImplementation libs.androidx.espresso.core.v340
+    androidTestImplementation libs.mockito.android
 }
