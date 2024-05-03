@@ -2,19 +2,16 @@ package com.example.enrgydrinksgpts.utils.shadow;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
-import androidx.core.content.ContextCompat;
-
-import com.example.enrgydrinksgpts.R;
-
 public class ShadowFrameLayout extends FrameLayout {
     private Paint shadowPaint;
     private RectF shadowRect;
-    private float cornerRadius = 40;
+    private float cornerRadius = 50; // Default corner radius that matches your CardView
 
     public ShadowFrameLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -23,12 +20,12 @@ public class ShadowFrameLayout extends FrameLayout {
 
     public void setCornerRadius(float radius) {
         this.cornerRadius = radius;
-        invalidate();
+        invalidate(); // Redraw the view with the new corner radius
     }
 
     private void initShadow() {
         shadowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        shadowPaint.setShadowLayer(20, 5, 5, ContextCompat.getColor(this.getContext(), R.color.shadow));
+        shadowPaint.setShadowLayer(10, 0, 5, Color.WHITE); // Smaller shadow spread
         setLayerType(LAYER_TYPE_SOFTWARE, shadowPaint);
         shadowRect = new RectF();
     }
@@ -36,13 +33,15 @@ public class ShadowFrameLayout extends FrameLayout {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        shadowRect.set(15, 15, w - 15, h - 10);
+        // Adjust padding if needed to prevent clipping of the shadow
+        shadowRect.set(10, 10, w - 10, h - 10); // Update rect size to have padding for shadows
     }
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
         shadowPaint.setStyle(Paint.Style.FILL);
-        shadowPaint.setShader(null);
+        shadowPaint.setColor(Color.WHITE); // Set the shadow color
+        // Draw a rounded rectangle that matches the corners of the CardView
         canvas.drawRoundRect(shadowRect, cornerRadius, cornerRadius, shadowPaint);
         super.dispatchDraw(canvas);
     }
