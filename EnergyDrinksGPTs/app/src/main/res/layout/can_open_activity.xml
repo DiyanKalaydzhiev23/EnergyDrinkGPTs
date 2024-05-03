@@ -19,10 +19,7 @@
         android:layout_marginTop="170dp"
         android:adjustViewBounds="true"
         android:baselineAlignBottom="false"
-        android:contentDescription="Classic Red Bull"
-        android:foreground="@drawable/classic_red_bull"
         android:scaleX="1"
-        android:src="@drawable/classic_red_bull"
         android:visibility="visible"
     />
 
@@ -35,8 +32,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="160dp"
         android:layout_marginEnd="151dp"
-        android:layout_marginBottom="566dp"
-        android:contentDescription="Soda Foam"
+        android:layout_marginBottom="555dp"
         android:src="@drawable/soda_bubbles"
         android:visibility="invisible" />
 

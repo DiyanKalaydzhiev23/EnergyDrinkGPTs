@@ -24,13 +24,15 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageView;
-        public TextView textView;
+        public TextView descriptionView;
+        public TextView titleView;
         public CardView cardView;
 
         public ViewHolder(View v) {
             super(v);
             imageView = v.findViewById(R.id.image);
-            textView = v.findViewById(R.id.text);
+            titleView = v.findViewById(R.id.title);
+            descriptionView = v.findViewById(R.id.descriptionText);
             cardView = v.findViewById(R.id.card_view);
         }
     }
@@ -51,7 +53,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         CardItem item = mItems.get(position);
         holder.imageView.setImageResource(item.getImageResourceId());
-        holder.textView.setText(item.getText());
+        holder.titleView.setText(item.getName());
+        holder.descriptionView.setText(item.getDescription());
+        holder.cardView.setCardBackgroundColor(item.getBackgroundColor());
         holder.cardView.setOnClickListener(view -> mListener.onItemClick(item));
     }
 

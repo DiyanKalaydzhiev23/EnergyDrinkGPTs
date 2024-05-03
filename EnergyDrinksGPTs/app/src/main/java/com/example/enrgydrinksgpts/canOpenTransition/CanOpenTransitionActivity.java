@@ -32,9 +32,13 @@ public class CanOpenTransitionActivity extends AppCompatActivity implements Shak
         sodaCanImageView = findViewById(R.id.classicRedBull);
         sodaFoamImage = findViewById(R.id.sodaFoam);
 
+        int imageResId = getIntent().getIntExtra("imageResId", R.drawable.classic_red_bull);
+        sodaCanImageView.setImageResource(imageResId);
+
         shakeDetector = new ShakeDetector(this);
         shakeDetector.register((SensorManager) getSystemService(SENSOR_SERVICE));
     }
+
 
     private void setupSodaFoamImageView() {
         Animation scaleAnimation = AnimationUtils.loadAnimation(this, R.anim.scale_animation);
