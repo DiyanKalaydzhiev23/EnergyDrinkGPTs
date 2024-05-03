@@ -38,12 +38,13 @@ public class ChatViewActivity extends AppCompatActivity {
 
         sendButton.setOnClickListener(v -> {
             String message = inputEditText.getText().toString();
+
             if (!message.isEmpty()) {
                 chatMessages.add(new ChatMessage(message, ChatMessage.SENDER_USER));
                 chatMessageAdapter.notifyItemInserted(chatMessages.size() - 1);
                 chatRecyclerView.scrollToPosition(chatMessages.size() - 1);
                 groqApi.sendMessageToAPI(message);
-                inputEditText.setText(""); // Clear the input field after sending
+                inputEditText.setText("");
             }
         });
     }

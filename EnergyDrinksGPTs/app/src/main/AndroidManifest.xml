@@ -25,6 +25,10 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".canOpenTransition.CanOpenTransitionActivity">
+        </activity>
+
         <activity android:name=".chats.ChatViewActivity"
             android:windowSoftInputMode="adjustResize"
         />
