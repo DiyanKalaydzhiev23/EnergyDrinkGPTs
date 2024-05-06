@@ -70,6 +70,8 @@ dependencies {
     implementation libs.androidx.cardview
     implementation libs.androidx.constraintlayout
     implementation libs.okhttp
+    implementation libs.cloudinary.android.v250
+    implementation libs.play.services.cast.tv
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
@@ -84,4 +86,5 @@ dependencies {
     androidTestImplementation libs.androidx.runner
     androidTestImplementation libs.androidx.espresso.core.v340
     androidTestImplementation libs.mockito.android
+
 }
