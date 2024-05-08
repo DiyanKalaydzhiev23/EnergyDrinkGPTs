@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.energy_drinks_cards_view);
 
         Map config = new HashMap();
-        config.put("cloud_name", "dhqp5qtsw");
-        config.put("api_secret", "z_NBFBvleZrDAua4_voV7PyDjvY");
-        config.put("api_key", "682492928691276");
+        config.put("cloud_name", BuildConfig.cloudinaryApiCloudName);
+        config.put("api_secret", BuildConfig.cloudinaryApiSecret);
+        config.put("api_key", BuildConfig.cloudinaryApiKey);
         MediaManager.init(this, config);
 
         CansRecyclerView = findViewById(R.id.recycler_view);

@@ -16,13 +16,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
 import com.example.enrgydrinksgpts.utils.cloudinary.CloudinaryMethods;
+import com.example.enrgydrinksgpts.utils.imageCompare.ImageCompareUtil;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class CameraActivity extends AppCompatActivity implements CloudinaryMethods.UploadListener {
+public class CameraActivity extends AppCompatActivity implements CloudinaryMethods.UploadListener, ImageCompareUtil.BestMatchCallback {
 
     private String currentPhotoPath;
 
@@ -78,6 +79,20 @@ public class CameraActivity extends AppCompatActivity implements CloudinaryMetho
     @Override
     public void onUploadSuccess(String imageUrl) {
         Log.d("Upload Success", "Image URL: " + imageUrl);
+        ImageCompareUtil imageCompareUtil = new ImageCompareUtil();
+        imageCompareUtil.findBestMatch(imageUrl, this);
+    }
+
+    @Override
+    public void onBestMatchResult(String bestMatchUrl, double percentDifference) {
+        Log.d("Best Match Result", "Best Match URL: " + bestMatchUrl + ", Percent Difference: " + percentDifference + "%");
+        Intent intent = new Intent(CameraActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onError(String error) {
+        Log.e("Comparison Error", error);
         Intent intent = new Intent(CameraActivity.this, MainActivity.class);
         startActivity(intent);
     }

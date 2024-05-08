@@ -10,6 +10,7 @@ public class CloudinaryMethods {
 
     public interface UploadListener {
         void onUploadSuccess(String imageUrl);
+
         void onUploadError(String error);
     }
 

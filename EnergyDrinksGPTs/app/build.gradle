@@ -13,6 +13,9 @@ android {
 
     // Get the API key from properties
     def apiKey = properties.getProperty("api.groqtoken") ?: ""
+    def cloudinaryApiKey = properties.getProperty("api.cloudinary.api_key") ?: ""
+    def cloudinaryApiSecret = properties.getProperty("api.cloudinary.api_secret") ?: ""
+    def cloudinaryApiCloudName = properties.getProperty("api.cloudinary.cloud_name") ?: ""
 
     defaultConfig {
         applicationId "com.example.enrgydrinksgpts"
@@ -27,6 +30,9 @@ android {
         }
 
         buildConfigField("String", "groqtoken", "\"$apiKey\"")
+        buildConfigField("String", "cloudinaryApiKey", "\"$cloudinaryApiKey\"")
+        buildConfigField("String", "cloudinaryApiSecret", "\"$cloudinaryApiSecret\"")
+        buildConfigField("String", "cloudinaryApiCloudName", "\"$cloudinaryApiCloudName\"")
     }
 
     buildTypes {
