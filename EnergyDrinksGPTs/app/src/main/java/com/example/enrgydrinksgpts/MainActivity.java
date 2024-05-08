@@ -2,6 +2,7 @@ package com.example.enrgydrinksgpts;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -13,7 +14,9 @@ import com.example.enrgydrinksgpts.energyDrinksCards.CardAdapter;
 import com.example.enrgydrinksgpts.energyDrinksCards.CardItem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private List<CardItem> CanCards;
@@ -25,7 +28,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.energy_drinks_cards_view);
 
-        MediaManager.init(this);
+        Map config = new HashMap();
+        config.put("cloud_name", "dhqp5qtsw");
+        config.put("api_secret", "z_NBFBvleZrDAua4_voV7PyDjvY");
+        config.put("api_key", "682492928691276");
+        MediaManager.init(this, config);
 
         CansRecyclerView = findViewById(R.id.recycler_view);
         CanCards = new ArrayList<>();
@@ -40,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         CansRecyclerView.setAdapter(CansAdapter);
-    }
 
+        Button openCameraButton = findViewById(R.id.openCameraButton);
+        openCameraButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, CameraActivity.class);
+            startActivity(intent);
+        });
+    }
 }
