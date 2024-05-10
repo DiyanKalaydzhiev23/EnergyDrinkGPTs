@@ -21,6 +21,7 @@ public class CanOpenTransitionActivity extends AppCompatActivity implements Shak
     private ImageView sodaCanImageView;
     private ImageView sodaFoamImage;
     private boolean isTiltedRight = true;
+    private String aiInstruction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,8 @@ public class CanOpenTransitionActivity extends AppCompatActivity implements Shak
         sodaFoamImage = findViewById(R.id.sodaFoam);
 
         int imageResId = getIntent().getIntExtra("imageResId", R.drawable.classic_red_bull);
+        aiInstruction = getIntent().getStringExtra("aiInstruction");
+
         sodaCanImageView.setImageResource(imageResId);
 
         shakeDetector = new ShakeDetector(this);
@@ -52,6 +55,7 @@ public class CanOpenTransitionActivity extends AppCompatActivity implements Shak
             @Override
             public void onAnimationEnd(Animation animation) {
                 Intent intent = new Intent(CanOpenTransitionActivity.this, ChatViewActivity.class);
+                intent.putExtra("aiInstruction", aiInstruction);
                 startActivity(intent);
             }
 

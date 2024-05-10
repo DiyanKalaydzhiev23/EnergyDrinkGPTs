@@ -15,15 +15,15 @@
 
     <Button
         android:id="@+id/openCameraButton"
-        android:layout_width="87dp"
-        android:layout_height="87dp"
+        android:layout_width="79dp"
+        android:layout_height="79dp"
         android:layout_centerInParent="true"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/camera_image"
+        android:elevation="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:elevation="50dp"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

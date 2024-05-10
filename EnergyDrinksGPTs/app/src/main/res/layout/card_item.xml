@@ -6,7 +6,8 @@
     android:layout_marginLeft="15dp"
     android:layout_marginTop="20dp"
     android:layout_marginRight="15dp"
-    android:paddingBottom="3dp"
+    android:paddingRight="2dp"
+    android:paddingBottom="4dp"
     android:background="#00000000">
 
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -40,18 +41,20 @@
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="12dp"
                     android:textColor="@color/white"
+                    android:fontFamily="monospace"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/descriptionText"
                     android:layout_width="match_parent"
+                    android:fontFamily="monospace"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="12dp"
                     android:textColor="@color/white"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
             </LinearLayout>
         </LinearLayout>

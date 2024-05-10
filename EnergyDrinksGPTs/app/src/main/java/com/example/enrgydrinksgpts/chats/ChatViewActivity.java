@@ -21,6 +21,7 @@ public class ChatViewActivity extends AppCompatActivity {
     private EditText inputEditText;
     private Button sendButton;
     private GroqApi groqApi;
+    private String aiInstruction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,8 @@ public class ChatViewActivity extends AppCompatActivity {
         sendButton = findViewById(R.id.sendButton);
         chatMessages = new ArrayList<>();
         chatMessageAdapter = new ChatMessageAdapter(chatMessages);
-        groqApi = new GroqApi(this, chatMessages, chatMessageAdapter, chatRecyclerView);
+        aiInstruction = getIntent().getStringExtra("aiInstruction");
+        groqApi = new GroqApi(this, chatMessages, chatMessageAdapter, chatRecyclerView, aiInstruction);
 
         setupRecyclerView();
 

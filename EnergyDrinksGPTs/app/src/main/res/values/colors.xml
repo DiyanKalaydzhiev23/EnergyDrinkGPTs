@@ -6,7 +6,7 @@
     <color name="messagesStartGradient">#FD6767</color>
     <color name="messagesEndGradienr">#819ED0</color>
     <color name="white">#FFFFFF</color>
-    <color name="shadow">#BCBCBC</color>
-    <color name="classic_red_bull_background">#467DF7</color>
-    <color name="red_red_bull_background">#E93837</color>
+    <color name="shadow">#D6D6D4</color>
+    <color name="classic_red_bull_background">#17139C</color>
+    <color name="red_red_bull_background">#DD3E3E</color>
 </resources>

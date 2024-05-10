@@ -5,6 +5,8 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.enrgydrinksgpts.BuildConfig;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,28 +20,39 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-import com.example.enrgydrinksgpts.BuildConfig;
-
 public class GroqApi {
 
     private final Activity activity;
     private final List<ChatMessage> chatMessages;
     private final ChatMessageAdapter chatMessageAdapter;
     private final RecyclerView chatRecyclerView;
+    private final String aiInstruction;
 
-    public GroqApi(Activity activity, List<ChatMessage> chatMessages,
-                   ChatMessageAdapter chatMessageAdapter, RecyclerView chatRecyclerView) {
+    public GroqApi(
+            Activity activity,
+            List<ChatMessage> chatMessages,
+            ChatMessageAdapter chatMessageAdapter,
+            RecyclerView chatRecyclerView,
+            String aiInstruction
+    ) {
         this.activity = activity;
         this.chatMessages = chatMessages;
         this.chatMessageAdapter = chatMessageAdapter;
         this.chatRecyclerView = chatRecyclerView;
+        this.aiInstruction = aiInstruction;
     }
 
     public void sendMessageToAPI(String userMessage) {
         Thread thread = new Thread(() -> {
             OkHttpClient client = new OkHttpClient();
             MediaType mediaType = MediaType.parse("application/json");
-            JSONObject requestBody = buildRequestBody(userMessage);
+
+            JSONObject requestBody = null;
+            try {
+                requestBody = buildRequestBody(userMessage);
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
 
             RequestBody body = RequestBody.create(mediaType, requestBody.toString());
             Request request = new Request.Builder()
@@ -51,6 +64,7 @@ public class GroqApi {
 
             try {
                 Response response = client.newCall(request).execute();
+                System.out.println("the response is ai " + response.toString());
                 if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
 
                 String responseData = response.body().string();
@@ -63,11 +77,18 @@ public class GroqApi {
         thread.start();
     }
 
-    private JSONObject buildRequestBody(String userMessage) {
+    private JSONObject buildRequestBody(String userMessage) throws JSONException {
         JSONArray messagesArray = new JSONArray();
+        JSONObject msgObject = new JSONObject();
+
+        msgObject.put("role", "system");
+        msgObject.put("content", this.aiInstruction);
+
+        messagesArray.put(msgObject);
+
         for (ChatMessage chatMessage : chatMessages) {
             try {
-                JSONObject msgObject = new JSONObject();
+                msgObject = new JSONObject();
                 msgObject.put("role", chatMessage.getSenderType() == ChatMessage.SENDER_USER ? "user" : "assistant");
                 msgObject.put("content", chatMessage.getMessage());
                 messagesArray.put(msgObject);
@@ -78,6 +99,7 @@ public class GroqApi {
 
         try {
             JSONObject currentUserMessage = new JSONObject();
+
             currentUserMessage.put("role", "user");
             currentUserMessage.put("content", userMessage);
             messagesArray.put(currentUserMessage);
