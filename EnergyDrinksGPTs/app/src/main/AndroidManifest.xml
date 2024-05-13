@@ -61,6 +61,10 @@
             android:windowSoftInputMode="adjustResize"
         />
 
+        <activity android:name=".energyDrinksCards.CongratsView"
+            android:windowSoftInputMode="adjustResize"
+        />
+
     </application>
 
 

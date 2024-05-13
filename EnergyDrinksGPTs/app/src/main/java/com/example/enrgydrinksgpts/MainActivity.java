@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.energy_drinks_cards_view);
 
         Map config = new HashMap();
+        config.put("cloud_name", BuildConfig.cloudinaryApiCloudName);
         config.put("api_secret", BuildConfig.cloudinaryApiSecret);
         config.put("api_key", BuildConfig.cloudinaryApiKey);
         MediaManager.init(this, config);

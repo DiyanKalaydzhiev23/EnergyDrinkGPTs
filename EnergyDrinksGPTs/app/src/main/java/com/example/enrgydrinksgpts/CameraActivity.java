@@ -15,6 +15,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import com.example.enrgydrinksgpts.energyDrinksCards.CongratsView;
 import com.example.enrgydrinksgpts.utils.cloudinary.CloudinaryMethods;
 import com.example.enrgydrinksgpts.utils.imageCompare.ImageCompareUtil;
 
@@ -85,8 +86,9 @@ public class CameraActivity extends AppCompatActivity implements CloudinaryMetho
 
     @Override
     public void onBestMatchResult(String bestMatchUrl, double percentDifference) {
-        Log.d("Best Match Result", "Best Match URL: " + bestMatchUrl + ", Percent Difference: " + percentDifference + "%");
-        Intent intent = new Intent(CameraActivity.this, MainActivity.class);
+        Intent intent = new Intent(CameraActivity.this, CongratsView.class);
+        intent.putExtra("BestMatchUrl", bestMatchUrl);
+        intent.putExtra("PercentDifference", percentDifference);
         startActivity(intent);
     }
 
