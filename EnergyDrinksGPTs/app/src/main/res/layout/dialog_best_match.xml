@@ -9,4 +9,44 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="102dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="595dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="84dp"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:text="You unlocked"
+            android:textColor="@color/white"
+            android:textFontWeight="1000"
+            android:textSize="30sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="102dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="645dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="42dp"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:text="Sugar Free Red Bull"
+            android:textColor="@color/white"
+            android:textFontWeight="1000"
+            android:textSize="30sp" />
+    </RelativeLayout>
+
+
+
+
 </FrameLayout>
