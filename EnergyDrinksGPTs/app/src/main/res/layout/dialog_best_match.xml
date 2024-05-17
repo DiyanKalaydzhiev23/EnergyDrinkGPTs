@@ -13,6 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/energyDrinkCongrats"
+            android:layout_width="335dp"
+            android:layout_height="630dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="41dp"
+            android:scaleType="centerCrop" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="102dp"
@@ -24,12 +34,13 @@
             android:layout_marginBottom="84dp"
             android:fontFamily="monospace"
             android:gravity="center"
-            android:text="You unlocked"
-            android:textColor="@color/white"
+            android:text="@string/you_unlocked"
+            android:textColor="@color/dialog_text_color"
             android:textFontWeight="1000"
             android:textSize="30sp" />
 
         <TextView
+            android:id="@+id/energyDrinkName"
             android:layout_width="match_parent"
             android:layout_height="102dp"
             android:layout_alignParentTop="true"
@@ -41,7 +52,7 @@
             android:fontFamily="monospace"
             android:gravity="center"
             android:text="Sugar Free Red Bull"
-            android:textColor="@color/white"
+            android:textColor="@color/dialog_text_color"
             android:textFontWeight="1000"
             android:textSize="30sp" />
     </RelativeLayout>

@@ -30,7 +30,6 @@ public class ImageCompareUtil {
 
     private void populateImageUrls() {
         imageUrls.add("https://res.cloudinary.com/dhqp5qtsw/image/upload/v1715160882/classic_red_bull_mvhvlb.png");
-        imageUrls.add("https://res.cloudinary.com/dhqp5qtsw/image/upload/v1715160705/Red-Bull-Yellow-Edition-Tropical-Energy-Drink-12-fl-oz-Can_7c9ba433-2f28-4d85-b225-66c6b1870520.6ab5b6e24173892b8390d2abe44a75f9_wnvt9n.webp");
         imageUrls.add("https://res.cloudinary.com/dhqp5qtsw/image/upload/v1715161761/red_red_bull_rpnoht.png");
         imageUrls.add("https://res.cloudinary.com/dhqp5qtsw/image/upload/v1715616756/sugar_free_red_bull_ecmxth.png");
     }
@@ -52,6 +51,7 @@ public class ImageCompareUtil {
                         BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                         StringBuilder response = new StringBuilder();
                         String line;
+
                         while ((line = reader.readLine()) != null) {
                             response.append(line);
                         }
@@ -59,6 +59,7 @@ public class ImageCompareUtil {
 
                         JSONObject jsonResponse = new JSONObject(response.toString());
                         double percentDifference = jsonResponse.getDouble("percent_difference");
+                        System.out.println("The percent diff is " + percentDifference);
 
                         if (percentDifference < lowestPercentDifference) {
                             lowestPercentDifference = percentDifference;

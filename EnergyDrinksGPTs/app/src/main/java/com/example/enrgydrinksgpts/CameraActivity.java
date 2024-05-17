@@ -87,8 +87,8 @@ public class CameraActivity extends AppCompatActivity implements CloudinaryMetho
     @Override
     public void onBestMatchResult(String bestMatchUrl, double percentDifference) {
         Intent intent = new Intent(CameraActivity.this, CongratsView.class);
-        intent.putExtra("BestMatchUrl", bestMatchUrl);
-        intent.putExtra("PercentDifference", percentDifference);
+        intent.putExtra("bestMatchUrl", bestMatchUrl);
+        intent.putExtra("percentDifference", percentDifference);
         startActivity(intent);
     }
 

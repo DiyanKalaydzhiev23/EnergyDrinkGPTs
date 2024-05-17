@@ -6,8 +6,10 @@
     <color name="messagesStartGradient">#FD6767</color>
     <color name="messagesEndGradienr">#819ED0</color>
     <color name="white">#FFFFFF</color>
+    <color name="dialog_text_color">#AFC4ED</color>
     <color name="shadow">#D6D6D4</color>
     <color name="classic_red_bull_background">#17139C</color>
     <color name="red_red_bull_background">#DD3E3E</color>
     <color name="sugar_free_red_bull_background">#3DB2FF</color>
+    <color name="grey_locked">#9CA5AB</color>
 </resources>

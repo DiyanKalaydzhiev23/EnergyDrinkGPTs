@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Energy Drinks GPTs</string>
-    
+    <string name="you_unlocked">You unlocked</string>
+
 </resources>

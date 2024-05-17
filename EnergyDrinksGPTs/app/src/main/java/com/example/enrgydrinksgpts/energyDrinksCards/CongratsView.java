@@ -15,6 +15,15 @@ public class CongratsView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_best_match);
 
+        String bestMatchUrl = getIntent().getStringExtra("bestMatchUrl");
+
+        ImageView imageView = findViewById(R.id.energyDrinkCongrats);
+        Glide.with(this)
+                .load(bestMatchUrl)
+//                .placeholder(R.drawable.loading_placeholder) // optional
+                .into(imageView);
+
+
         ImageView gifImageView = findViewById(R.id.gifImageView);
         Glide.with(this)
                 .asGif()

@@ -1,24 +1,40 @@
 package com.example.enrgydrinksgpts.energyDrinksCards;
 
+import android.content.Context;
+
+import androidx.core.content.ContextCompat;
+
+import com.example.enrgydrinksgpts.R;
+
 public class CardItem {
     private final int imageResourceId;
     private final String description;
     private final String name;
     private final String aiInstruction;
-    private final int backgroundColor;
+    private int backgroundColor;
+    private final Context context;
+    private final boolean unlocked;
 
-    public CardItem(int imageResourceId, String name, String text, String aiInstruction, int backgroundColor) {
+    public CardItem(int imageResourceId, String name, String text, String aiInstruction, int backgroundColor, boolean unlocked, Context context) {
         this.imageResourceId = imageResourceId;
         this.name = name;
         this.description = text;
         this.aiInstruction = aiInstruction;
-        this.backgroundColor = backgroundColor;
+        this.unlocked = unlocked;
+        this.context = context;
+        this.setBackgroundColor(context, backgroundColor);
     }
 
-    public String getAiInstruction() { return  aiInstruction; };
+    public boolean getUnlocked() { return unlocked; }
+
+    public String getAiInstruction() { return aiInstruction; };
 
     public String getName() {
         return name;
+    }
+
+    public Context getContext() {
+        return context;
     }
 
     public int getImageResourceId() {
@@ -31,5 +47,13 @@ public class CardItem {
 
     public int getBackgroundColor() {
         return backgroundColor;
+    }
+
+    public void setBackgroundColor(Context context, int backgroundColor) {
+        if (!this.getUnlocked()) {
+            this.backgroundColor = ContextCompat.getColor(context, R.color.grey_locked);
+        } else {
+            this.backgroundColor = backgroundColor;
+        }
     }
 }

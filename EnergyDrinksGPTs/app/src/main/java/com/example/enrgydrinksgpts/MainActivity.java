@@ -43,7 +43,9 @@ public class MainActivity extends AppCompatActivity {
                 "Classic Red Bull",
                 "A classic Red Bull for your daily basis needs, just like a normal gpt without any predefined settings",
                 "You are a classic AI assistant that helps with everyday tasks.",
-                ContextCompat.getColor(this, R.color.classic_red_bull_background)
+                ContextCompat.getColor(this, R.color.classic_red_bull_background),
+                true,
+                this
             )
         );
         CanCards.add(
@@ -52,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
                         "Watermelon Red Bull",
                         "The Watermelon Red Bull (Red Red Bull) is known for his love suggestions.",
                         "You are AI that helps with love problems. Even tho you don't have feelings the user knows that everything you say its just a suggestion and you don't need to remind them that you are just an AI.",
-                        ContextCompat.getColor(this, R.color.red_red_bull_background)
+                        ContextCompat.getColor(this, R.color.red_red_bull_background),
+                        false,
+                        this
                 )
         );
         CanCards.add(
@@ -61,7 +65,9 @@ public class MainActivity extends AppCompatActivity {
                         "Sugar Free Red Bull",
                         "The Sugar Free Red Bull is really good at giving healthy life advices.",
                         "You are AI that gives the best healthy life instructions. Even tho you are not a professional trainer or doctor users know that and you don't need to remind them, just give them the best advices you can about their health.",
-                        ContextCompat.getColor(this, R.color.sugar_free_red_bull_background)
+                        ContextCompat.getColor(this, R.color.sugar_free_red_bull_background),
+                        false,
+                        this
                 )
         );
 
