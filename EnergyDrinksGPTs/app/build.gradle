@@ -94,5 +94,5 @@ dependencies {
     androidTestImplementation libs.androidx.runner
     androidTestImplementation libs.androidx.espresso.core.v340
     androidTestImplementation libs.mockito.android
-
+    implementation libs.gson
 }
