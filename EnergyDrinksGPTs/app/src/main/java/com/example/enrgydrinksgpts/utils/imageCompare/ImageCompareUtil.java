@@ -9,12 +9,13 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ImageCompareUtil {
-    private final ArrayList<String> imageUrls = new ArrayList<>();
+    public static final HashMap<String, String> imageUrls = new HashMap<>();
 
     public interface BestMatchCallback {
         void onBestMatchResult(String bestMatchUrl, double percentDifference);
@@ -29,9 +30,9 @@ public class ImageCompareUtil {
     }
 
     private void populateImageUrls() {
-        imageUrls.add("https://res.cloudinary.com/dhqp5qtsw/image/upload/v1715160882/classic_red_bull_mvhvlb.png");
-        imageUrls.add("https://res.cloudinary.com/dhqp5qtsw/image/upload/v1715161761/red_red_bull_rpnoht.png");
-        imageUrls.add("https://res.cloudinary.com/dhqp5qtsw/image/upload/v1715616756/sugar_free_red_bull_ecmxth.png");
+        imageUrls.put("https://res.cloudinary.com/dhqp5qtsw/image/upload/v1715160882/classic_red_bull_mvhvlb.png", "Classic Red Bull");
+        imageUrls.put("https://res.cloudinary.com/dhqp5qtsw/image/upload/v1715161761/red_red_bull_rpnoht.png", "Watermelon Red Bull");
+        imageUrls.put("https://res.cloudinary.com/dhqp5qtsw/image/upload/v1715616756/sugar_free_red_bull_ecmxth.png", "Sugar Free Red Bull");
     }
 
     public void findBestMatch(String targetImageUrl, BestMatchCallback callback) {
@@ -39,7 +40,9 @@ public class ImageCompareUtil {
             String bestMatchUrl = null;
             double lowestPercentDifference = Double.MAX_VALUE;
 
-            for (String compareUrl : imageUrls) {
+            for (Map.Entry<String, String> entry : imageUrls.entrySet()) {
+                String compareUrl = entry.getKey();
+
                 try {
                     URL url = new URL("https://image-compare.hcti.io/api?image_url=" + targetImageUrl +
                             "&other_image_url=" + compareUrl);

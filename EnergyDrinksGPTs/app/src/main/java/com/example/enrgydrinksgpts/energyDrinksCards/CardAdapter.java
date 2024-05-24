@@ -56,7 +56,14 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         holder.titleView.setText(item.getName());
         holder.descriptionView.setText(item.getDescription());
         holder.cardView.setCardBackgroundColor(item.getBackgroundColor());
-        holder.cardView.setOnClickListener(view -> mListener.onItemClick(item));
+
+        if (item.isUnlocked()) {
+            holder.cardView.setOnClickListener(view -> mListener.onItemClick(item));
+            holder.cardView.setAlpha(1.0f); // Fully opaque if unlocked
+        } else {
+            holder.cardView.setOnClickListener(null);
+            holder.cardView.setAlpha(0.5f); // Semi-transparent if not unlocked
+        }
     }
 
     @Override

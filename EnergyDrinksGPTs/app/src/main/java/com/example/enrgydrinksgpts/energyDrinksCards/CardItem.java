@@ -1,9 +1,7 @@
 package com.example.enrgydrinksgpts.energyDrinksCards;
 
 import android.content.Context;
-
 import androidx.core.content.ContextCompat;
-
 import com.example.enrgydrinksgpts.R;
 
 public class CardItem {
@@ -25,9 +23,13 @@ public class CardItem {
         this.setBackgroundColor(context, backgroundColor);
     }
 
-    public boolean getUnlocked() { return unlocked; }
+    public boolean isUnlocked() {
+        return unlocked;
+    }
 
-    public String getAiInstruction() { return aiInstruction; };
+    public String getAiInstruction() {
+        return aiInstruction;
+    }
 
     public String getName() {
         return name;
@@ -50,7 +52,7 @@ public class CardItem {
     }
 
     public void setBackgroundColor(Context context, int backgroundColor) {
-        if (!this.getUnlocked()) {
+        if (!this.unlocked) {
             this.backgroundColor = ContextCompat.getColor(context, R.color.grey_locked);
         } else {
             this.backgroundColor = backgroundColor;

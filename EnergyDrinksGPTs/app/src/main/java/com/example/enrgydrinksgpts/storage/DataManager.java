@@ -5,8 +5,8 @@ import android.content.SharedPreferences;
 import com.google.gson.Gson;
 
 public class DataManager {
-    private static final String PREFS_NAME = "my_app_prefs";
-    private static final String KEY_DATA = "key_data";
+    private static final String PREFS_NAME = "energy_drinks_prefs";
+    private static final String KEY_DATA = "energy_drink";
     private final SharedPreferences sharedPreferences;
     private final Gson gson;
 
@@ -24,9 +24,11 @@ public class DataManager {
 
     public UnlockedEnergyDrinksPair loadData() {
         String jsonData = sharedPreferences.getString(KEY_DATA, null);
+
         if (jsonData != null) {
             return gson.fromJson(jsonData, UnlockedEnergyDrinksPair.class);
         }
+
         return null;
     }
 }
