@@ -1,5 +1,7 @@
 package com.example.enrgydrinksgpts.utils.cloudinary;
 
+import android.content.Context;
+
 import com.cloudinary.android.MediaManager;
 import com.cloudinary.android.callback.ErrorInfo;
 import com.cloudinary.android.callback.UploadCallback;
@@ -7,11 +9,23 @@ import com.cloudinary.android.callback.UploadCallback;
 import java.util.Map;
 
 public class CloudinaryMethods {
+    private static boolean initialized = false;
 
     public interface UploadListener {
         void onUploadSuccess(String imageUrl);
 
         void onUploadError(String error);
+    }
+
+    public static void initialize(Context context, Map<String, String> config) {
+        if (!initialized) {
+            MediaManager.init(context, config);
+            initialized = true;
+        }
+    }
+
+    public static boolean hasBeenInitialized() {
+        return initialized;
     }
 
     public void uploadImage(String filePath, UploadListener listener) {

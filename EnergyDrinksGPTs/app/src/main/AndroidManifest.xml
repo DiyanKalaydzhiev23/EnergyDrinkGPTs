@@ -31,8 +31,8 @@
             android:value="cloudinary://@dhqp5qtsw"/>
 
         <activity android:name=".CameraActivity">
-
         </activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.enrgydrinksgpts.fileprovider"
@@ -59,13 +59,17 @@
 
         <activity android:name=".chats.ChatViewActivity"
             android:windowSoftInputMode="adjustResize"
-        />
+            />
 
         <activity android:name=".energyDrinksCards.CongratsView"
             android:windowSoftInputMode="adjustResize"
-        />
+            />
+
+        <activity
+            android:name=".LoadingScreen"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="true" />
 
     </application>
-
 
 </manifest>

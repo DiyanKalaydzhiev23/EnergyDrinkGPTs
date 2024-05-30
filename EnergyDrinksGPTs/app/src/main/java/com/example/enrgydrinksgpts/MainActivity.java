@@ -8,12 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cloudinary.android.MediaManager;
 import com.example.enrgydrinksgpts.canOpenTransition.CanOpenTransitionActivity;
 import com.example.enrgydrinksgpts.energyDrinksCards.CardAdapter;
 import com.example.enrgydrinksgpts.energyDrinksCards.CardItem;
 import com.example.enrgydrinksgpts.storage.DataManager;
 import com.example.enrgydrinksgpts.storage.UnlockedEnergyDrinksPair;
+import com.example.enrgydrinksgpts.utils.cloudinary.CloudinaryMethods;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,20 +31,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.energy_drinks_cards_view);
 
-        // Initialize DataManager
         dataManager = new DataManager(this);
 
-        // Initialize Cloudinary
-        Map<String, String> config = new HashMap<>();
-        config.put("cloud_name", BuildConfig.cloudinaryApiCloudName);
-        config.put("api_secret", BuildConfig.cloudinaryApiSecret);
-        config.put("api_key", BuildConfig.cloudinaryApiKey);
-        MediaManager.init(this, config);
+        if (!CloudinaryMethods.hasBeenInitialized()) {
+            Map<String, String> config = new HashMap<>();
+            config.put("cloud_name", BuildConfig.cloudinaryApiCloudName);
+            config.put("api_secret", BuildConfig.cloudinaryApiSecret);
+            config.put("api_key", BuildConfig.cloudinaryApiKey);
+            CloudinaryMethods.initialize(this, config);
+        }
 
         CansRecyclerView = findViewById(R.id.recycler_view);
         CanCards = new ArrayList<>();
 
-        // Add card items with unlocked status from DataManager
         addCardItems();
 
         CansAdapter = new CardAdapter(CanCards, item -> {

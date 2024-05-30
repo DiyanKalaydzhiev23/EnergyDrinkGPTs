@@ -15,9 +15,6 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
-import com.example.enrgydrinksgpts.energyDrinksCards.CongratsView;
-import com.example.enrgydrinksgpts.storage.DataManager;
-import com.example.enrgydrinksgpts.storage.UnlockedEnergyDrinksPair;
 import com.example.enrgydrinksgpts.utils.cloudinary.CloudinaryMethods;
 import com.example.enrgydrinksgpts.utils.imageCompare.ImageCompareUtil;
 
@@ -29,12 +26,10 @@ import java.util.Locale;
 public class CameraActivity extends AppCompatActivity implements CloudinaryMethods.UploadListener, ImageCompareUtil.BestMatchCallback {
 
     private String currentPhotoPath;
-    private DataManager dataManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.dataManager = new DataManager(this);
 
         openCamera();
     }
@@ -84,23 +79,13 @@ public class CameraActivity extends AppCompatActivity implements CloudinaryMetho
     @Override
     public void onUploadSuccess(String imageUrl) {
         Log.d("Upload Success", "Image URL: " + imageUrl);
-        ImageCompareUtil imageCompareUtil = new ImageCompareUtil();
-        imageCompareUtil.findBestMatch(imageUrl, this);
+        Intent intent = new Intent(CameraActivity.this, LoadingScreen.class);
+        intent.putExtra("imageUrl", imageUrl);
+        startActivity(intent);
     }
 
     @Override
     public void onBestMatchResult(String bestMatchUrl, double percentDifference) {
-        Intent intent = new Intent(CameraActivity.this, CongratsView.class);
-        intent.putExtra("bestMatchUrl", bestMatchUrl);
-        intent.putExtra("percentDifference", percentDifference);
-
-        UnlockedEnergyDrinksPair unlockedEnergyDrinksPair = new UnlockedEnergyDrinksPair();
-        unlockedEnergyDrinksPair.setEnergyDrink(ImageCompareUtil.imageUrls.get(bestMatchUrl));
-        unlockedEnergyDrinksPair.setUnlocked(true);
-
-        dataManager.saveData(unlockedEnergyDrinksPair);
-
-        startActivity(intent);
     }
 
     @Override
