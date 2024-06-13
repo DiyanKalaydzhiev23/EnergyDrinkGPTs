@@ -1,4 +1,4 @@
-package com.example.enrgydrinksgpts;
+package com.example.enrgydrinksgpts.utils.camera;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,8 +15,9 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import com.example.enrgydrinksgpts.LoadingScreen;
+import com.example.enrgydrinksgpts.MainActivity;
 import com.example.enrgydrinksgpts.utils.cloudinary.CloudinaryMethods;
-import com.example.enrgydrinksgpts.utils.imageCompare.ImageCompareUtil;
 
 import java.io.File;
 import java.text.SimpleDateFormat;

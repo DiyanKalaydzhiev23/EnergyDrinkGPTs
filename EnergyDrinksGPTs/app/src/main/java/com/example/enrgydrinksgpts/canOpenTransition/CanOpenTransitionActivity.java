@@ -10,9 +10,9 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.enrgydrinksgpts.MediaPlayerHandler;
+import com.example.enrgydrinksgpts.utils.handlers.MediaPlayerHandler;
 import com.example.enrgydrinksgpts.R;
-import com.example.enrgydrinksgpts.ShakeDetector;
+import com.example.enrgydrinksgpts.utils.handlers.ShakeDetector;
 import com.example.enrgydrinksgpts.chats.ChatViewActivity;
 
 public class CanOpenTransitionActivity extends AppCompatActivity implements ShakeDetector.OnShakeListener {

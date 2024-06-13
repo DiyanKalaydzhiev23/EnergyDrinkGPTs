@@ -1,4 +1,4 @@
-package com.example.enrgydrinksgpts;
+package com.example.enrgydrinksgpts.utils.handlers;
 
 import android.content.Context;
 import android.media.MediaPlayer;

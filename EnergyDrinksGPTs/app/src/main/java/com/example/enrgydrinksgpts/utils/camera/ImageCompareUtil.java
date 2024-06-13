@@ -1,4 +1,4 @@
-package com.example.enrgydrinksgpts.utils.imageCompare;
+package com.example.enrgydrinksgpts.utils.camera;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -31,14 +31,15 @@ public class ImageCompareUtil {
 
     private void populateImageUrls() {
         imageUrls.put("https://res.cloudinary.com/dhqp5qtsw/image/upload/v1715160882/classic_red_bull_mvhvlb.png", "Classic Red Bull");
-        imageUrls.put("https://res.cloudinary.com/dhqp5qtsw/image/upload/v1715161761/red_red_bull_rpnoht.png", "Watermelon Red Bull");
+        imageUrls.put("https://res.cloudinary.com/dhqp5qtsw/image/upload/v1717073220/psxlrxdkp8doefvgxzjm.jpg", "Watermelon Red Bull");
         imageUrls.put("https://res.cloudinary.com/dhqp5qtsw/image/upload/v1715616756/sugar_free_red_bull_ecmxth.png", "Sugar Free Red Bull");
+        imageUrls.put("https://res.cloudinary.com/dhqp5qtsw/image/upload/v1717073793/jenuqfoeef8zirna8ebl.png", "Tropical Red Bull");
     }
 
     public void findBestMatch(String targetImageUrl, BestMatchCallback callback) {
         executorService.execute(() -> {
             String bestMatchUrl = null;
-            double lowestPercentDifference = Double.MAX_VALUE;
+            double biggestPercentDiff = Double.MIN_VALUE;
 
             for (Map.Entry<String, String> entry : imageUrls.entrySet()) {
                 String compareUrl = entry.getKey();
@@ -62,10 +63,10 @@ public class ImageCompareUtil {
 
                         JSONObject jsonResponse = new JSONObject(response.toString());
                         double percentDifference = jsonResponse.getDouble("percent_difference");
-                        System.out.println("The percent diff is " + percentDifference);
+                        System.out.println("The percent diff is2 " + percentDifference + " " + compareUrl);
 
-                        if (percentDifference < lowestPercentDifference) {
-                            lowestPercentDifference = percentDifference;
+                        if (percentDifference > biggestPercentDiff) {
+                            biggestPercentDiff = percentDifference;
                             bestMatchUrl = compareUrl;
                         }
                     } else {
@@ -78,7 +79,7 @@ public class ImageCompareUtil {
                 }
             }
 
-            postBestMatchResult(bestMatchUrl, lowestPercentDifference, callback);
+            postBestMatchResult(bestMatchUrl, biggestPercentDiff, callback);
         });
     }
 

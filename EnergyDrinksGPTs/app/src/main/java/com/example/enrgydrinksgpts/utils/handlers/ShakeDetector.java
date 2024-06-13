@@ -1,4 +1,4 @@
-package com.example.enrgydrinksgpts;
+package com.example.enrgydrinksgpts.utils.handlers;
 
 import android.hardware.SensorManager;
 import android.hardware.Sensor;

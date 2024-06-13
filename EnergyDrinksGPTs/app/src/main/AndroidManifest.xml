@@ -30,7 +30,7 @@
             android:name="CLOUDINARY_URL"
             android:value="cloudinary://@dhqp5qtsw"/>
 
-        <activity android:name=".CameraActivity">
+        <activity android:name=".utils.camera.CameraActivity">
         </activity>
 
         <provider

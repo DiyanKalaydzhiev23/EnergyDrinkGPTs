@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide;
 import com.example.enrgydrinksgpts.energyDrinksCards.CongratsView;
 import com.example.enrgydrinksgpts.storage.DataManager;
 import com.example.enrgydrinksgpts.storage.UnlockedEnergyDrinksPair;
-import com.example.enrgydrinksgpts.utils.imageCompare.ImageCompareUtil;
+import com.example.enrgydrinksgpts.utils.camera.ImageCompareUtil;
 
 public class LoadingScreen extends AppCompatActivity implements ImageCompareUtil.BestMatchCallback {
     private DataManager dataManager;

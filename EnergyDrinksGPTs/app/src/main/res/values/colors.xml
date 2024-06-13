@@ -11,6 +11,7 @@
     <color name="classic_red_bull_background">#17139C</color>
     <color name="red_red_bull_background">#DD3E3E</color>
     <color name="sugar_free_red_bull_background">#3DB2FF</color>
+    <color name="yellow_red_bull_background">#EEC151</color>
     <color name="grey_locked">#9CA5AB</color>
     <color name="gif_bg_color">#0E2934</color>
 </resources>

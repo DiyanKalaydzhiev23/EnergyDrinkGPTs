@@ -13,6 +13,7 @@ import com.example.enrgydrinksgpts.energyDrinksCards.CardAdapter;
 import com.example.enrgydrinksgpts.energyDrinksCards.CardItem;
 import com.example.enrgydrinksgpts.storage.DataManager;
 import com.example.enrgydrinksgpts.storage.UnlockedEnergyDrinksPair;
+import com.example.enrgydrinksgpts.utils.camera.CameraActivity;
 import com.example.enrgydrinksgpts.utils.cloudinary.CloudinaryMethods;
 
 import java.util.ArrayList;
@@ -95,6 +96,17 @@ public class MainActivity extends AppCompatActivity {
                         "You are AI that gives the best healthy life instructions. Even tho you are not a professional trainer or doctor users know that and you don't need to remind them, just give them the best advice you can about their health.",
                         ContextCompat.getColor(this, R.color.sugar_free_red_bull_background),
                         isUnlocked(unlockedData, "Sugar Free Red Bull"),
+                        this
+                )
+        );
+        CanCards.add(
+                new CardItem(
+                        R.drawable.yellow_red_bull,
+                        "Tropical Red Bull",
+                        "The Tropical Red Bull can tell you the best ways to relax and chill.",
+                        "You are AI that gives the best ways to chill and relax. Even tho you are not a professional psychologist nor yoga master users know that and you don't need to remind them, just give them the best advice you can about the ways that they can chill and relax.",
+                        ContextCompat.getColor(this, R.color.yellow_red_bull_background),
+                        isUnlocked(unlockedData, "Tropical Red Bull"),
                         this
                 )
         );
